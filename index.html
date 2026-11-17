@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAPS MANIA — See the World in Data</title>
+<meta name="description" content="Explore population, GDP, literacy, peaks, lakes, dinosaurs and more on interactive world maps with timelines. Sourced from World Bank, UN, UNESCO, IAEA & more.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+</head><body>
+<header class="nav"><a class="logo" href="#">🌍 MAPS<span>MANIA</span></a><nav><a href="#explore">Explore</a><a href="#data">All Data</a><a href="#sources">Sources</a></nav><a class="navcta" href="#explore">Start Exploring →</a></header>
+
+<main id="explore" class="explorer">
+ <div class="sec-head"><h2>World Explorer</h2><p>Pick a dataset → read the colours → drag time → click any country for its full story.</p></div>
+ <div class="cat-pills" id="catPills"></div>
+  <div class="layout">
+   <aside class="panel datasets"><div class="panel-h">DATASETS <span id="dsCount"></span></div><input id="dsSearch" placeholder="🔍 Filter datasets…" aria-label="Filter datasets"><div id="datasetList"></div><p id="sourceNote" class="source-note"></p></aside>
+   <section class="mapwrap">
+    <div class="map-toolbar"><div><h3 id="mapTitle">Population</h3><p id="mapSub"></p><p id="dataStatus" class="data-status">Loading saved record…</p></div><div class="toolbar-btns"><button id="globeBtn" title="Toggle globe view" aria-label="Toggle globe view">🌐 Globe</button><button id="playBtn" class="play" aria-label="Play timeline">▶ Play timeline</button><button onclick="resetZoom()" aria-label="Reset map view">Reset view</button></div></div>
+    <div id="map"><div id="tooltip"></div><div id="mapLoading" class="loading">Loading saved data record…</div></div>
+    <div class="map-legend"><div class="map-legend-bar"><div id="legend"></div><div id="legendLabels" class="legend-labels"></div></div><div class="map-legend-meta"><span><span class="nodata-chip"></span>No data</span><span>🌊 Ocean: fixed colour</span></div></div>
+    <div class="timeline" id="timelineBar"><button id="playBtn2" aria-label="Play timeline">▶</button><span id="yearLabel" class="year">2024</span><input type="range" id="yearSlider" min="2000" max="2024" value="2024" step="1" aria-label="Year"><button id="latestBtn" title="Jump to latest year" aria-label="Jump to latest year">⏭</button><span class="range-label" id="rangeLabel">1960 — 2024</span></div>
+   <div class="timeline-na" id="timelineNA" hidden>🕰️ <b>Timeline unavailable</b> for this dataset — it is a single snapshot<span id="timelineNAYear"></span>, so there is no year slider. <span id="timelineNASource"></span></div>
+   <p class="hint">💡 Scroll to zoom • Drag to pan • Click a country for details, sparkline & rankings</p>
+   <div class="rankings"><div class="rank-col"><h4>🏆 Highest</h4><ol id="topList"></ol></div><div class="rank-col"><h4>Lowest (with data)</h4><ol id="bottomList"></ol></div><div class="rank-col insight"><h4>⚡ Insight</h4><p id="insight"></p></div></div>
+  </section>
+   <aside class="panel detail"><input id="search" placeholder="🔍 Search country… e.g. Japan" aria-label="Search country"><div id="detailBody"></div></aside>
+ </div>
+</main>
+
+<section id="data" class="section alt"><div class="sec-head"><h2>All Countries, One Table</h2><p id="tableSub">Ranked highest-first. Click a row to spotlight the country on the map.</p></div>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Country</th><th id="thMetric">Value</th><th>Year</th></tr></thead><tbody id="tableBody"></tbody></table></div></section>
+
+<section id="sources" class="section"><div class="sec-head"><h2>Sources & Honesty Box</h2><p>Maps lie when data is vague. Ours show their receipts.</p></div>
+<div class="sources-grid">
+ <div class="src"><b>World Bank — World Development Indicators</b><span>Population, density, growth, fertility, birth rate, life expectancy, GDP, unemployment, literacy, internet, urban, forest, rainfall, CO₂, renewables & more (CC-BY 4.0). Stored as a local record in <code>data/wb/</code> (built from the official WDI bulk download; refresh with <code>scripts/fetch-data.mjs</code>). The page re-checks the World Bank API in the background and updates itself if newer data exists — it never waits on the live API to draw the map.</span></div>
+ <div class="src"><b>Consumption, language & climate snapshots</b><span>Coffee (ICO), tea (FAOSTAT/industry), beer (Kirin Beer University), wine (OIV), living languages (Ethnologue 2024), mean temperature (World Bank CCKP 1991–2020 normals), all curated in <code>data/curated-extra.js</code> via <code>scripts/build-curated-extra.py</code> — rounded, approximate, for discovery not engineering.</span></div>
+ <div class="src"><b>Biodiversity, volcanoes & political maps</b><span>Bird/amphibian/reptile richness (IUCN Red List), Holocene volcanoes (Smithsonian GVP), time zones (IANA), driving side (WorldStandards) and landlocked status incl. doubly-landlocked Liechtenstein & Uzbekistan (UN-OHRLLS) — curated, rounded, same honesty bar as above.</span></div>
+ <div class="src"><b>Dot layers — eruptions, cities, airports, meteorites, quakes</b><span>Iconic eruptions (Smithsonian GVP, VEI), ~40 megacities (UN World Urbanization Prospects), ~40 busiest airports (ACI 2023), famous meteorite falls (Meteoritical Society) — curated in <code>data/points.js</code> via <code>scripts/build-points.py</code>. Earthquakes: every M6.0+ since 2000 (~4,000 events) from the USGS ANSS Catalog, saved as <code>data/earthquakes.json</code> (built with <code>scripts/build-earthquakes.py</code>) with live background refresh. Public domain where stated.</span></div>
+ <div class="src"><b>Awards, heritage & blocs</b><span>Nobel laureates (nobelprize.org), all-time Olympic medals (Olympedia; per-capita computed with UN population), UNESCO World Heritage Sites, Freedom House democracy status, legal traditions (JuriGlobe), plug types & metric (WorldStandards), EU/NATO/BRICS/OPEC/G20 membership, dominant language families (Ethnologue), government type (CIA Factbook), coffee production (FAO), chocolate consumption (industry reports) — curated in <code>data/curated-extra.js</code>, rounded and approximate.</span></div>
+ <div class="src"><b>Map boundaries — India shown as per Government of India</b><span>World boundaries vendored locally in <code>data/world.geo.json</code> (Natural Earth via johan/world.geo.json), with India's outline replaced by the official Survey-of-India-aligned boundary — full Jammu &amp; Kashmir (incl. PoK/Gilgit-Baltistan), Ladakh (incl. Aksai Chin) and Arunachal Pradesh — dissolved from <code>data/india-states-official.geojson</code> (MIT; india-in-data/kashmir + state data). Rebuild: <code>scripts/build-india-world.py</code>. The ocean is a fixed colour and is never recoloured by data.</span></div>
+ <div class="src"><b>UN Population Division (WPP 2024)</b><span>Median age & demographic estimates. UN DESA, World Population Prospects 2024.</span></div>
+ <div class="src"><b>UNESCO Institute for Statistics</b><span>Adult literacy (via World Bank SE.ADT.LITR.ZS). Note: literacy is not measured every year — gaps are real, not bugs.</span></div>
+ <div class="src"><b>IAEA PRIS (2024)</b><span>Operational nuclear reactors by country. Power Reactor Information System.</span></div>
+ <div class="src"><b>CIA World Factbook</b><span>Highest peaks, coastline length. Public domain.</span></div>
+ <div class="src"><b>HydroLAKES / IUCN / Paleobiology DB</b><span>Lake counts (HydroLAKES v1.0), mammal richness (IUCN Red List), dinosaur fossil localities (Paleobiology Database) — curated snapshots, rounded, for discovery not engineering.</span></div>
+ <div class="src"><b>Commonwealth Secretariat</b><span>56 member nations (2024, incl. Gabon & Togo).</span></div>
+</div>
+<div class="honest">⚠️ <b>Read this:</b> “No data” (hatched grey) means the source has no value for that country-year — we never invent numbers. Curated datasets are single-year snapshots, so the timeline is hidden for them. Aggregates like “World” / “EU” are excluded from the record and rankings. Antarctica is shown but carries no data in any series. India is depicted as per the official map of the Government of India / Survey of India.</div>
+</section>
+
+<footer><b>🌍 MAPS MANIA</b><p>Built for the curious. Data belongs to its sources above. Boundaries: Natural Earth, vendored locally; India depicted as per the Government of India / Survey of India official boundary (see Sources).</p><p><a href="#explore">Explorer</a> • <a href="#data">All Data</a> • <a href="#sources">Sources</a></p></footer>
+<script src="data.js"></script><script src="data/curated-extra.js"></script><script src="data/points.js"></script><script src="app.js"></script>
+</body></html>

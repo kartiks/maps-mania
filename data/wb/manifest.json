@@ -1,0 +1,414 @@
+{
+ "source": "World Bank \u2014 World Development Indicators (bulk WDI_CSV.zip)",
+ "fetchedAt": "2026-11-16T13:15:21+00:00",
+ "datasets": {
+  "population": {
+   "code": "SP.POP.TOTL",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "263b7c7aaae33c3c",
+   "argentina": 45851378.0,
+   "australia": 27614411.0
+  },
+  "density": {
+   "code": "EN.POP.DNST",
+   "countries": 216,
+   "years": [
+    "1961",
+    "2024"
+   ],
+   "countriesLatestYear": 214,
+   "sha256": "bd43b4ca785aa6a1",
+   "argentina": 16.6976,
+   "australia": 3.5371
+  },
+  "birthRate": {
+   "code": "SP.DYN.CBRT.IN",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2024"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "8157f4aa7a3e4651",
+   "argentina": 11.086,
+   "australia": 10.7
+  },
+  "lifeExpect": {
+   "code": "SP.DYN.LE00.IN",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2024"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "d3cf1b15be503e11",
+   "argentina": 77.543,
+   "australia": 83.0512
+  },
+  "gdp": {
+   "code": "NY.GDP.MKTP.CD",
+   "countries": 214,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 186,
+   "sha256": "4bbc6bdedc56cfc6",
+   "argentina": 683097891618.5966,
+   "australia": 1798518933689.2104
+  },
+  "gdpCap": {
+   "code": "NY.GDP.PCAP.CD",
+   "countries": 214,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 186,
+   "sha256": "c281dc08f6d1a838",
+   "argentina": 14898.0886,
+   "australia": 65129.7228
+  },
+  "gdpGrowth": {
+   "code": "NY.GDP.MKTP.KD.ZG",
+   "countries": 214,
+   "years": [
+    "1961",
+    "2025"
+   ],
+   "countriesLatestYear": 186,
+   "sha256": "c915fe3a169736f8",
+   "argentina": 4.3673,
+   "australia": 1.3504
+  },
+  "unemployment": {
+   "code": "SL.UEM.TOTL.ZS",
+   "countries": 187,
+   "years": [
+    "1991",
+    "2025"
+   ],
+   "countriesLatestYear": 182,
+   "sha256": "7b5ba7e9cf8e07a9",
+   "argentina": 7.145,
+   "australia": 4.09
+  },
+  "literacy": {
+   "code": "SE.ADT.LITR.ZS",
+   "countries": 170,
+   "years": [
+    "1970",
+    "2024"
+   ],
+   "countriesLatestYear": 29,
+   "sha256": "f0f40a3afd721d95",
+   "argentina": null,
+   "australia": null
+  },
+  "internet": {
+   "code": "IT.NET.USER.ZS",
+   "countries": 213,
+   "years": [
+    "1990",
+    "2025"
+   ],
+   "countriesLatestYear": 10,
+   "sha256": "ce748c50f988ca10",
+   "argentina": null,
+   "australia": null
+  },
+  "urban": {
+   "code": "SP.URB.TOTL.IN.ZS",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "abd8c23fb554b48b",
+   "argentina": 92.3519,
+   "australia": 87.7193
+  },
+  "forest": {
+   "code": "AG.LND.FRST.ZS",
+   "countries": 214,
+   "years": [
+    "1990",
+    "2024"
+   ],
+   "countriesLatestYear": 209,
+   "sha256": "32daf5f6a52d31e8",
+   "argentina": 17.0927,
+   "australia": 17.3651
+  },
+  "renewable": {
+   "code": "EG.FEC.RNEW.ZS",
+   "countries": 212,
+   "years": [
+    "1990",
+    "2022"
+   ],
+   "countriesLatestYear": 71,
+   "sha256": "c3ae53af93d059ed",
+   "argentina": null,
+   "australia": null
+  },
+  "co2": {
+   "code": "EN.GHG.CO2.PC.CE.AR5",
+   "countries": 203,
+   "years": [
+    "1970",
+    "2024"
+   ],
+   "countriesLatestYear": 203,
+   "sha256": "9f367c4d5f577cda",
+   "argentina": 4.0107,
+   "australia": 14.0987
+  },
+  "rainfall": {
+   "code": "AG.LND.PRCP.MM",
+   "countries": 182,
+   "years": [
+    "1961",
+    "2022"
+   ],
+   "countriesLatestYear": 180,
+   "sha256": "dd65e96cc0b772a8",
+   "argentina": 591.0,
+   "australia": 534.0
+  },
+  "popGrowth": {
+   "code": "SP.POP.GROW",
+   "countries": 217,
+   "years": [
+    "1961",
+    "2025"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "aabf8f86c59d32d2",
+   "argentina": 0.3391,
+   "australia": 1.5331
+  },
+  "fertility": {
+   "code": "SP.DYN.TFRT.IN",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2024"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "7d541345139eebcd",
+   "argentina": 1.504,
+   "australia": 1.481
+  },
+  "electricity": {
+   "code": "EG.ELC.ACCS.ZS",
+   "countries": 216,
+   "years": [
+    "1990",
+    "2024"
+   ],
+   "countriesLatestYear": 215,
+   "sha256": "de66f3e61a69a342",
+   "argentina": 98.4,
+   "australia": 100.0
+  },
+  "mobiles": {
+   "code": "IT.CEL.SETS.P2",
+   "countries": 214,
+   "years": [
+    "1960",
+    "2024"
+   ],
+   "countriesLatestYear": 151,
+   "sha256": "72c1c9ed06da4341",
+   "argentina": 140.235,
+   "australia": 112.581
+  },
+  "childMort": {
+   "code": "SH.DYN.MORT",
+   "countries": 196,
+   "years": [
+    "1960",
+    "2024"
+   ],
+   "countriesLatestYear": 196,
+   "sha256": "6a8c3c761596e39a",
+   "argentina": 9.5,
+   "australia": 3.6
+  },
+  "elderly": {
+   "code": "SP.POP.65UP.TO.ZS",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "662a58f58b69509f",
+   "argentina": 12.6344,
+   "australia": 18.093
+  },
+  "undernourish": {
+   "code": "SN.ITK.DEFC.ZS",
+   "countries": 168,
+   "years": [
+    "2001",
+    "2024"
+   ],
+   "countriesLatestYear": 165,
+   "sha256": "b42ebc64f7e11872",
+   "argentina": 2.8,
+   "australia": 2.5
+  },
+  "gini": {
+   "code": "SI.POV.GINI",
+   "countries": 171,
+   "years": [
+    "1963",
+    "2025"
+   ],
+   "countriesLatestYear": 4,
+   "sha256": "5788a5ac9175b3c6",
+   "argentina": null,
+   "australia": null
+  },
+  "military": {
+   "code": "MS.MIL.XPND.GD.ZS",
+   "countries": 166,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 150,
+   "sha256": "78995277b580644d",
+   "argentina": 0.5632,
+   "australia": 1.9179
+  },
+  "tourism": {
+   "code": "ST.INT.ARVL",
+   "countries": 203,
+   "years": [
+    "1995",
+    "2020"
+   ],
+   "countriesLatestYear": 132,
+   "sha256": "f938c00d3f31505f",
+   "argentina": null,
+   "australia": 1828000.0
+  },
+  "protected": {
+   "code": "ER.LND.PTLD.ZS",
+   "countries": 213,
+   "years": [
+    "2013",
+    "2025"
+   ],
+   "countriesLatestYear": 213,
+   "sha256": "f0ea07f12978744c",
+   "argentina": 8.8,
+   "australia": 22.0
+  },
+  "eduSpend": {
+   "code": "SE.XPD.TOTL.GD.ZS",
+   "countries": 203,
+   "years": [
+    "1970",
+    "2025"
+   ],
+   "countriesLatestYear": 2,
+   "sha256": "64ffc70a9dc8967b",
+   "argentina": null,
+   "australia": null
+  },
+  "rdSpend": {
+   "code": "GB.XPD.RSDV.GD.ZS",
+   "countries": 156,
+   "years": [
+    "1996",
+    "2024"
+   ],
+   "countriesLatestYear": 30,
+   "sha256": "1321106bf3004195",
+   "argentina": null,
+   "australia": null
+  },
+  "ageDep": {
+   "code": "SP.POP.DPND",
+   "countries": 217,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 217,
+   "sha256": "ae426b1d885a9832",
+   "argentina": 50.7162,
+   "australia": 55.6968
+  },
+  "broadband": {
+   "code": "IT.NET.BBND.P2",
+   "countries": 208,
+   "years": [
+    "1998",
+    "2024"
+   ],
+   "countriesLatestYear": 151,
+   "sha256": "de1444db54396d65",
+   "argentina": 26.0976,
+   "australia": 36.4788
+  },
+  "foodProd": {
+   "code": "AG.PRD.FOOD.XD",
+   "countries": 195,
+   "years": [
+    "1961",
+    "2024"
+   ],
+   "countriesLatestYear": 192,
+   "sha256": "3da8995c7469e049",
+   "argentina": 108.87,
+   "australia": 122.47
+  },
+  "trade": {
+   "code": "NE.TRD.GNFS.ZS",
+   "countries": 194,
+   "years": [
+    "1960",
+    "2025"
+   ],
+   "countriesLatestYear": 138,
+   "sha256": "fc1afa8a8595eaf9",
+   "argentina": 30.3646,
+   "australia": 45.9014
+  },
+  "maternal": {
+   "code": "SH.STA.MMRT",
+   "countries": 194,
+   "years": [
+    "1985",
+    "2023"
+   ],
+   "countriesLatestYear": 194,
+   "sha256": "d3ddf44bdd72e5bc",
+   "argentina": 33.0,
+   "australia": 2.0
+  },
+  "femaleLabor": {
+   "code": "SL.TLF.CACT.FE.ZS",
+   "countries": 187,
+   "years": [
+    "1990",
+    "2025"
+   ],
+   "countriesLatestYear": 182,
+   "sha256": "02267cd5a791053c",
+   "argentina": 52.469,
+   "australia": 62.513
+  }
+ }
+}
