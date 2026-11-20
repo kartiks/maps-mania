@@ -176,7 +176,8 @@ function drawMap(){
  updateMap();
 }
 let globeView=false,gRot=[-30,-15],globeK=1;
-const globeDrag=d3.drag().on('drag',e=>{gRot[0]+=e.dx*.35;gRot[1]=Math.max(-60,Math.min(60,gRot[1]-e.dy*.35));fitProjection(true)});
+let globeQueued=false;
+const globeDrag=d3.drag().on('drag',e=>{gRot[0]+=e.dx*.35;gRot[1]=Math.max(-60,Math.min(60,gRot[1]-e.dy*.35));if(globeQueued)return;globeQueued=true;requestAnimationFrame(()=>{globeQueued=false;fitProjection(true)})});
 function fitProjection(spin){
  const box=$('#map'); const W=Math.max(320,Math.round(box.clientWidth||960));
  const H=Math.round(Math.min(600,Math.max(440,W*0.60))); mapW=W; mapH=H;
@@ -385,7 +386,9 @@ async function loadDataset(ds){
  applyYear();
  if(ok)revalidate(ds);
 }
-function applyYear(){vals=cur.type==='points'?new Map():(cur.type==='wb'?(cache[cur.id]?.[year]||cache[cur.id]?.[String(year)]||new Map()):(cache[cur.id]?.['snap']||new Map()));buildScale();updateMap();renderPoints();renderRankings();renderTable();if(selected&&names[selected])selectCountry(selected,names[selected],true)}
+let rafQueued=false;
+function scheduleApplyYear(){if(rafQueued)return;rafQueued=true;requestAnimationFrame(()=>{rafQueued=false;applyYear(true)})}
+function applyYear(light){vals=cur.type==='points'?new Map():(cur.type==='wb'?(cache[cur.id]?.[year]||cache[cur.id]?.[String(year)]||new Map()):(cache[cur.id]?.['snap']||new Map()));buildScale();updateMap();renderPoints();renderRankings();if(!light)renderTable();if(selected&&names[selected])selectCountry(selected,names[selected],true)}
 function buildScale(){
  const arr=[...vals.values()].filter(v=>v!=null);
  if(cur.type==='points'){colorScale=()=>NODATA;$('#legend').style.background=cur.ptLegendCSS();const lb=cur.ptLegendLabels();$('#legendLabels').innerHTML=`<span>${lb[0]}</span><span>${lb[1]}</span>`;return}
@@ -430,7 +433,8 @@ function renderDatasetList(cat=curCat,q=($('#dsSearch')?.value||'').trim().toLow
 $$('#catPills .pill').forEach(p=>p.onclick=()=>{$$('#catPills .pill').forEach(x=>x.classList.remove('active'));p.classList.add('active');curCat=p.dataset.cat;renderDatasetList()});
 $('#dsSearch').addEventListener('input',()=>renderDatasetList());
 $('#search').addEventListener('change',e=>{const q=e.target.value.toLowerCase();const f=geo?.features.find(f=>f.properties.name.toLowerCase().includes(q));if(f)selectCountry(f.id,f.properties.name)});
-$('#yearSlider').addEventListener('input',e=>{stopPlay();yearTouched=true;year=+e.target.value;$('#yearLabel').textContent=year;applyYear()});
+$('#yearSlider').addEventListener('input',e=>{stopPlay();yearTouched=true;year=+e.target.value;$('#yearLabel').textContent=year;scheduleApplyYear()});
+$('#yearSlider').addEventListener('change',()=>{applyYear()});
 function togglePlay(){if(playing){stopPlay();return}if(!hasTimeline)return;const sl=$('#yearSlider');if(+sl.value>=+sl.max)sl.value=sl.min;year=+sl.value;$('#yearLabel').textContent=year;applyYear();$('#playBtn').textContent='⏸ Pause';$('#playBtn2').textContent='⏸';$('#timelineBar').classList.add('playing');playing=setInterval(()=>{const s2=$('#yearSlider');year++;if(year>=+s2.max){year=+s2.max;s2.value=year;$('#yearLabel').textContent=year;applyYear();stopPlay();return}s2.value=year;$('#yearLabel').textContent=year;applyYear()},700)}
 $('#playBtn').onclick=togglePlay;$('#playBtn2').onclick=togglePlay;
 $('#latestBtn').onclick=()=>{stopPlay();const sl=$('#yearSlider');year=+sl.max;sl.value=year;$('#yearLabel').textContent=year;applyYear()};
